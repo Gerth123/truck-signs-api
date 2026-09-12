@@ -262,6 +262,7 @@ See [docs/testing.md](./docs/testing.md) for details on the linting and formatti
 - `Procfile`: process declaration for platform-as-a-service deployment (e.g. Heroku-style), not used by the Docker Compose setup in this repository.
 - `pyproject.toml`: shared configuration for `black`, `isort`, and `flake8`, used by the linting CI workflow.
 - `docs/testing.md`: documents the linting and formatting setup (`flake8`, `isort`, `black`) and the CI testing pipeline in more detail.
+- `docs/Truck Signs API v2 Checkliste.pdf`: the original project submission checklist provided by Developer Akademie, kept for reference.
 
 ## Additional Information
 
