@@ -227,6 +227,8 @@ The repository includes three GitHub Actions workflows:
 - **Build Application**: builds and pushes the Docker image to GitHub Container Registry on tag pushes.
 - **Check open PR for feature branch**: verifies that an open pull request exists for the current branch.
 
+See [docs/testing.md](./docs/testing.md) for details on the linting and formatting setup.
+
 ## Screenshots of the Django Backend Admin Panel
 
 ### Mobile View
@@ -257,6 +259,9 @@ The repository includes three GitHub Actions workflows:
 
 - `.gitattributes`: enforces LF line endings for `entrypoint.sh` to avoid shebang failures on Windows checkouts.
 - `example.env`: template listing all environment variables required to run the project; copy to `.env` and fill in your own values.
+- `Procfile`: process declaration for platform-as-a-service deployment (e.g. Heroku-style), not used by the Docker Compose setup in this repository.
+- `pyproject.toml`: shared configuration for `black`, `isort`, and `flake8`, used by the linting CI workflow.
+- `docs/testing.md`: documents the linting and formatting setup (`flake8`, `isort`, `black`) and the CI testing pipeline in more detail.
 
 ## Additional Information
 
