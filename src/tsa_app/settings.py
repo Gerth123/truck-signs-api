@@ -58,6 +58,8 @@ SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-change-me-in-production")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# When deploying to a server, ALLOWED_HOSTS must include the server's IP or domain,
+# otherwise Django rejects requests with a 400 Bad Request.
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
 
 INSTALLED_APPS = [
