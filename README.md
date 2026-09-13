@@ -17,14 +17,13 @@ The store also allows clients to upload their own designs and to customize them 
   - [Table of Contents](#table-of-contents)
   - [Quickstart](#quickstart)
     - [Prerequisites](#prerequisites)
-    - [Steps (Docker Compose)](#steps-docker-compose)
-    - [How to Build the Image](#how-to-build-the-image)
-    - [Local Development (without Docker)](#local-development-without-docker)
+    - [Steps](#steps)
   - [Project Goal](#project-goal)
   - [Usage](#usage)
     - [Configuration](#configuration)
     - [Building the Container Image](#building-the-container-image)
     - [Running a Single Container Manually](#running-a-single-container-manually)
+    - [Local Development (without Docker)](#local-development-without-docker)
     - [Settings](#settings)
     - [Models](#models)
     - [Brief Explanation of the Views](#brief-explanation-of-the-views)
@@ -45,10 +44,9 @@ The store also allows clients to upload their own designs and to customize them 
 
 ### Prerequisites
 
-* Docker and Docker Compose (for the containerized setup)
-* [Python 3.12.0](https://www.python.org/downloads/release/python-3120/) and [Git](https://git-scm.com/install/) (for local development without containers)
+* Docker and Docker Compose
 
-### Steps (Docker Compose)
+### Steps
 
 1. Clone the repo:
 ```bash
@@ -59,59 +57,16 @@ The store also allows clients to upload their own designs and to customize them 
 ```bash
    cp example.env .env
 ```
-3. Build the application image (see [How to Build the Image](#how-to-build-the-image) below).
+3. Build the application image:
+```bash
+   docker build -t truck-signs-api:latest .
+```
+   `docker-compose.yml` references this image by name rather than building it inline, so this step must run before `docker compose up`.
 4. Start the stack:
 ```bash
    docker compose up
 ```
 5. Open the admin panel at `http://localhost:8020/admin/` and log in with the superuser credentials configured in your `.env`.
-
-### How to Build the Image
-
-```bash
-docker build -t truck-signs-api:latest .
-```
-
-`docker-compose.yml` references this image by name rather than building it inline, so this step must run before `docker compose up`.
-
-### Local Development (without Docker)
-
-1. Clone the repo:
-```bash
-   git clone https://github.com/Gerth123/truck-signs-api.git
-   cd truck-signs-api
-```
-2. Copy the content of the example.env file into a .env file:
-```bash
-   cp example.env .env
-```
-3. Create virtual environment:
-```bash
-   python -m venv <venv_name>
-```
-4. Activate virtual environment:
-```bash
-   source <venv_name>/scripts/activate
-```
-5. Install requirements:
-```bash
-   pip install -r requirements.txt
-```
-6. Migrate database:
-```bash
-   python src/manage.py makemigrations
-   python src/manage.py migrate
-```
-7. Collect static files:
-```bash
-   python src/manage.py collectstatic
-```
-8. Start the Python Development Server:
-```bash
-   python src/manage.py runserver
-```
-
-With `MODE` unset or `MODE=dev`, this uses SQLite and requires no database setup.
 
 ## Project Goal
 
@@ -160,6 +115,45 @@ docker run -d \
   -e DJANGO_SUPERUSER_PASSWORD=<your-admin-password> \
   truck-signs-api:latest
 ```
+
+### Local Development (without Docker)
+
+1. Clone the repo:
+```bash
+   git clone https://github.com/Gerth123/truck-signs-api.git
+   cd truck-signs-api
+```
+2. Copy the content of the example.env file into a .env file:
+```bash
+   cp example.env .env
+```
+3. Create virtual environment:
+```bash
+   python -m venv <venv_name>
+```
+4. Activate virtual environment:
+```bash
+   source <venv_name>/scripts/activate
+```
+5. Install requirements:
+```bash
+   pip install -r requirements.txt
+```
+6. Migrate database:
+```bash
+   python src/manage.py makemigrations
+   python src/manage.py migrate
+```
+7. Collect static files:
+```bash
+   python src/manage.py collectstatic
+```
+8. Start the Python Development Server:
+```bash
+   python src/manage.py runserver
+```
+
+With `MODE` unset or `MODE=dev`, this uses SQLite and requires no database setup.
 
 ### Settings
 
