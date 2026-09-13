@@ -16,6 +16,9 @@ services:
       - "8020:8000"
     depends_on:
       - db
-
+    volumes:
+      - media_files:/app/src/mediafiles
+      
 volumes:
   postgres_data:
+  media_files:
